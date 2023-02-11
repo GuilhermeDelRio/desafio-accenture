@@ -1,0 +1,27 @@
+.fornecedor-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.fornecedor-header button {
+  background-color: purple;
+  width: 180px;
+  color: #FFF;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.fornecedor-header button:hover {
+  cursor: pointer;
+  background-color: rgb(117, 2, 117);
+  transition: 0.5s;
+}

@@ -1,0 +1,42 @@
+.cadastro-empresa-form form{  
+  display: flex;
+  flex-direction: column;
+}
+
+.cadastro-empresa-form label {
+  margin-bottom: 5px;
+}
+
+.cadastro-empresa-form input {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  font-size: 19px;
+}
+
+.cadastro-empresa-form .btn-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.cadastro-empresa-form button {
+  background-color: green;
+  border: none;
+  border-radius: 5px;
+  padding: 8px;
+  color: #FFF;
+  font-size: 19px;
+}
+
+.cadastro-empresa-form button:hover {
+  cursor: pointer;
+  background-color: rgb(3, 119, 3);
+}
+
+.errorMsg {
+  color: red;
+  margin: 10px 0px;
+}

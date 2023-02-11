@@ -1,0 +1,29 @@
+.navbar {
+  background-color: purple;
+  color: #FFF;
+  height: 80px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #FFF;
+  transition: 0.5s;
+  margin-right: 10px;
+}
+
+ul li a:hover {
+  cursor: pointer;
+  color: rgb(201, 197, 197);
+}
