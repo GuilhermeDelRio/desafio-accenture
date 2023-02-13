@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace backend.Migrations
 {
     /// <inheritdoc />
-    public partial class Primeiramigration : Migration
+    public partial class PrimeiraMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -46,9 +46,9 @@ namespace backend.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     cep = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    cnpj = table.Column<string>(type: "longtext", nullable: true)
+                    cnpj = table.Column<string>(type: "varchar(255)", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    cpf = table.Column<string>(type: "longtext", nullable: true)
+                    cpf = table.Column<string>(type: "varchar(255)", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     RG = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
@@ -64,6 +64,18 @@ namespace backend.Migrations
                 name: "IX_empresa_cpnj",
                 table: "empresa",
                 column: "cpnj",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_fornecedor_cnpj",
+                table: "fornecedor",
+                column: "cnpj",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_fornecedor_cpf",
+                table: "fornecedor",
+                column: "cpf",
                 unique: true);
         }
 

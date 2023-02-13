@@ -50,8 +50,23 @@ function FornecedorProvider({ children }) {
       .catch(err => console.log(err))
   }
 
+  async function pesquisaFornecedor(query) {
+    if (!query) return
+
+    const fornecedorFiltrado = fornecedores
+      .find((fornecedor) => fornecedor.nome
+        .toUpperCase()
+        .includes(query.toUpperCase()))
+
+    if (fornecedorFiltrado === undefined ) {
+      return toast.error("Fornecedor não encontrado!")
+    }
+
+    setFornecedores([fornecedorFiltrado])
+  }
+
   return(
-    <FornecedorContext.Provider value={{ fornecedores, deletaFornecedor, criarFornecedor }}>
+    <FornecedorContext.Provider value={{ fornecedores, deletaFornecedor, criarFornecedor, pesquisaFornecedor }}>
       {children}
     </FornecedorContext.Provider>
   )

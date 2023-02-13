@@ -22,5 +22,6 @@ namespace backend.Models
     [Required]
     [Column("nome_fantasia")]
     public string? NomeFantasia { get; set; }
+    // public virtual ICollection<Fornecedor>? Fornecedores { get; set; }
   }
 }

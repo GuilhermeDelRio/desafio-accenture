@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react'
-import './fornecedorForm.css'
+import './FornecedorEditForm.css'
 
 import Validacao from '../../Utils/validacao'
 
@@ -8,19 +8,19 @@ import { FaSave } from "react-icons/fa"
 
 import { FornecedorContext } from '../../Contexts/fornecedorContext'
 
-const initialState = {
-  nome: '',
-  email: '',
-  cep: '',
-  cnpjoucpf: '',
-  cnpj: '',
-  cpf: '',
-  rg: '',
-  dataNascimento: '',
-  naturezaJuridica: 'CNPJ'
-}
+export default function FornecedorEditForm({ fornecedorEdit }) {
 
-export default function FornecedorForm() {
+  const initialState = {
+    nome: fornecedorEdit.nome,
+    email: fornecedorEdit.email,
+    cep: fornecedorEdit.cep,
+    cnpjoucpf: '',
+    cnpj: fornecedorEdit.cnpj,
+    cpf: fornecedorEdit.cpf,
+    rg: fornecedorEdit.rg,
+    dataNascimento: fornecedorEdit.dataNascimento,
+    naturezaJuridica: !fornecedorEdit.cnpj ? 'CPF' : 'CNPJ'
+  }
   
   const { criarFornecedor } = useContext(FornecedorContext)
 

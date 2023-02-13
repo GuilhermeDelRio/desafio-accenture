@@ -18,8 +18,9 @@ builder.Services.AddCors(options => options.AddDefaultPolicy(builder => {
 var connection = builder.Configuration["MySQLConnection:MySQLConnectionString"];
 
 // Banco de dados
-builder.Services.AddDbContext<AppDbContext>(options => options.
-  UseMySql(connection,
+builder.Services.AddDbContext<AppDbContext>(options => options
+  .UseLazyLoadingProxies()
+  .UseMySql(connection,
     new MySqlServerVersion(
       new Version(8, 0, 5))));
 

@@ -1,0 +1,50 @@
+.cadastro-fornecedor-form form{  
+  display: flex;
+  flex-direction: column;
+}
+
+.cadastro-fornecedor-form label {
+  margin-bottom: 5px;
+}
+
+.cadastro-fornecedor-form input {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  font-size: 19px;
+}
+
+.natureza-Juridica input {
+  margin-right: 5px;
+}
+
+.natureza-Juridica label{
+  margin-right: 10px;
+}
+
+.cadastro-fornecedor-form .btn-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.cadastro-fornecedor-form button {
+  background-color: green;
+  border: none;
+  border-radius: 5px;
+  padding: 8px;
+  color: #FFF;
+  font-size: 19px;
+}
+
+.cadastro-fornecedor-form button:hover {
+  cursor: pointer;
+  background-color: rgb(3, 119, 3);
+}
+
+.errorMsg {
+  color: red;
+  margin: 10px 0px;
+}

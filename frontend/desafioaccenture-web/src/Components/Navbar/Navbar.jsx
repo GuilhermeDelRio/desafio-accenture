@@ -17,10 +17,6 @@ export default function Navbar() {
           <li>
             <Link to='/fornecedor'>Fornecedor</Link>
           </li>
-
-          <li>
-            <Link to='/sobre'>Sobre</Link>
-          </li>
           
         </ul>
       </nav>

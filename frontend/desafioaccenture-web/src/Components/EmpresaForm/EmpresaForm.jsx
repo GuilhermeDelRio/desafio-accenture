@@ -1,13 +1,12 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import './empresaForm.css'
 
+import { toast } from 'react-toastify'
+import { FaSave } from "react-icons/fa"
+import api from '../../Apis/desafioAccentureAPI'
+import Select from 'react-select'
 
 import Validacao from '../../Utils/validacao'
-import cepAPI from '../../Apis/ceplaAPI'
-
-import { toast } from 'react-toastify'
-import { FaSave } from "react-icons/fa";
-
 import { EmpresaContext } from '../../Contexts/empresaContext'
 
 const initialState = {
@@ -16,12 +15,26 @@ const initialState = {
   nomeFantasia: ''
 }
 
+let options = []
+
 export default function EmpresaForm() {
 
   const { criarEmpresa } = useContext(EmpresaContext)
 
   const [empresa, setEmpresa] = useState(initialState)
   const [errorList, setErrorList] = useState([])
+
+  const [fornecedores, setFornecedores] = useState([])
+
+  useEffect(() => {
+    api.get('Fornecedor')
+      .then(res => {
+        res.data.forEach(element => {
+          options.push({ id: element.id, value: element.nome, label: element.nome})
+        })
+      })
+  
+  }, [])
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -33,6 +46,7 @@ export default function EmpresaForm() {
   }
 
   const cadastrarEmpresa = async () => {
+    console.log(fornecedores)
     let errors = Validacao.formCheck(empresa)
 
     if (errors.length > 0) {
@@ -42,7 +56,7 @@ export default function EmpresaForm() {
 
     setErrorList([])
 
-    let responseCEP = await getCEP(empresa.cep)
+    let responseCEP = await Validacao.getCEP(empresa.cep)
 
     if(responseCEP.data.length === 0) {
       return toast.error('O CEP digitado não é válido')
@@ -50,18 +64,6 @@ export default function EmpresaForm() {
 
     await criarEmpresa(empresa)
     setEmpresa(initialState)
-  }
-
-  async function getCEP(cep) {
-
-    const config = {
-      headers: {
-        "Accept": "application/json"
-      }
-    }
-
-    return cepAPI.get(cep, config)
-      .catch(err => console.log(err))
   }
 
   return (
@@ -94,6 +96,15 @@ export default function EmpresaForm() {
           onChange={handleChange}
         />
         {errorList.includes('cep') ? <p className='errorMsg'>O campo CEP não pode ser vazio.</p> : <></>}
+
+        <label>Fornecedores</label>
+        <Select 
+          options={options} 
+          isMulti
+          isClearable={true}
+          isSearchable={true}
+          onChange={(item) => setFornecedores(item)}
+        />
       </form>
 
       <div className='btn-row'>

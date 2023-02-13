@@ -5,6 +5,34 @@
   align-items: center;
 }
 
+.filtros-fornecedores input {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #aaa;
+
+  border-radius: 5px 0px 0px 5px;
+  font-size: 19px;
+}
+
+.filtros-fornecedores input:focus {
+  outline: none;
+}
+
+.filtros-fornecedores button {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 0px 5px 5px 0px;
+  font-size: 19px;
+  background-color: purple;
+  color: #FFF;
+}
+
+.filtros-fornecedores button:hover {
+  cursor: pointer;
+  background-color: rgb(117, 2, 117);
+}
+
 .item-fornecedor {
   margin-top: 20px;
   width: 55%;

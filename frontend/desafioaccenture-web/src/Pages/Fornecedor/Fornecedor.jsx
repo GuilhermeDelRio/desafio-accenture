@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 import './fornecedor.css'
 
 import { FaPlus } from 'react-icons/fa'

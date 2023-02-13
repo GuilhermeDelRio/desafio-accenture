@@ -17,6 +17,9 @@ namespace backend.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.2")
+                .HasAnnotation("Proxies:ChangeTracking", false)
+                .HasAnnotation("Proxies:CheckEquality", false)
+                .HasAnnotation("Proxies:LazyLoading", true)
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("backend.Models.Empresa", b =>
@@ -62,11 +65,11 @@ namespace backend.Migrations
                         .HasColumnName("cep");
 
                     b.Property<string>("CNPJ")
-                        .HasColumnType("longtext")
+                        .HasColumnType("varchar(255)")
                         .HasColumnName("cnpj");
 
                     b.Property<string>("CPF")
-                        .HasColumnType("longtext")
+                        .HasColumnType("varchar(255)")
                         .HasColumnName("cpf");
 
                     b.Property<DateTime?>("DataNascimento")
@@ -88,6 +91,12 @@ namespace backend.Migrations
                         .HasColumnName("RG");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CNPJ")
+                        .IsUnique();
+
+                    b.HasIndex("CPF")
+                        .IsUnique();
 
                     b.ToTable("fornecedor");
                 });

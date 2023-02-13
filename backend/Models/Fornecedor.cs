@@ -33,5 +33,6 @@ namespace backend.Models
 
     [Column("data_nascimento")]
     public DateTime? DataNascimento { get; set; }
+    // public vitual ICollection<Empresa>? Empresas {get; set; }
   }
 }

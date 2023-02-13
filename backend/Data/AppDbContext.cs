@@ -14,6 +14,12 @@ namespace backend.Data
     {
       builder.Entity<Empresa>()
         .HasIndex(e => e.CNPJ).IsUnique();
+      
+      builder.Entity<Fornecedor>()
+        .HasIndex(f => f.CNPJ).IsUnique();
+
+      builder.Entity<Fornecedor>()
+        .HasIndex(f => f.CPF).IsUnique();
     }
   }
 }

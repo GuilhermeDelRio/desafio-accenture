@@ -1,3 +1,5 @@
+using backend.Models;
+
 namespace backend.Data.ValueObjects
 {
   public class FornecedorVO

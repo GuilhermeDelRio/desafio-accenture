@@ -19,10 +19,16 @@ namespace backend.Repository
 
     public async Task<FornecedorVO> Create(FornecedorVO vo)
     {
-      Fornecedor fornecedor = _mapper.Map<Fornecedor>(vo);
-      _context.Fornecedores!.Add(fornecedor);
-      await _context.SaveChangesAsync();
-      return _mapper.Map<FornecedorVO>(fornecedor);
+      try {
+        Fornecedor fornecedor = _mapper.Map<Fornecedor>(vo);
+        _context.Fornecedores!.Add(fornecedor);
+        await _context.SaveChangesAsync();
+        return _mapper.Map<FornecedorVO>(fornecedor);
+      }
+      catch (Exception)
+      {
+        return null!;
+      }
     }
 
     public async Task<FornecedorVO> FindById(int id)

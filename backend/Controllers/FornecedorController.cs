@@ -1,5 +1,6 @@
 using backend.Data.ValueObjects;
 using backend.Repository;
+using backend.Utils;
 using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Controllers
@@ -18,8 +19,15 @@ namespace backend.Controllers
     [HttpPost]
     public async Task<ActionResult<FornecedorVO>> Create([FromBody] FornecedorVO vo)
     {
+      Utilitario util = new();
+
       if (vo == null) return BadRequest();
       var fornecedor = await _repository.Create(vo);
+
+      var cpfValido = await util.ValidaCEP(vo.CEP!);
+      if(!cpfValido) return BadRequest(new { message = "O CEP não é válido"});
+
+      if (fornecedor == null) return BadRequest(new { message = "O CNPJ/CPF já foi cadastrado"});
       return CreatedAtAction(nameof(FindById), new { Id = fornecedor.Id }, fornecedor);
     }
 
